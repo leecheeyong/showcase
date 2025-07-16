@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "project-showcase-b60de",
   storageBucket: "project-showcase-b60de.firebasestorage.app",
   messagingSenderId: "265517201692",
-  appId: "1:265517201692:web:ac8c8b1c3c80466fc8e2d9"
+  appId: "1:265517201692:web:c9047dba9404f8f3c8e2d9"
 };
 
 
