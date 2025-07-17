@@ -97,7 +97,7 @@
     <div class="p-4 sm:p-6 md:p-7 lg:p-8 relative z-10 flex-1 flex flex-col">
       <div class="flex items-start justify-between mb-4">
         <h3
-          class="text-xl sm:text-2xl md:text-2xl font-extrabold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 line-clamp-2"
+          class="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 line-clamp-2"
         >
           {{ project.title }}
         </h3>
@@ -130,7 +130,7 @@
         <span
           v-for="tech in project.technologies?.slice(0, 4)"
           :key="tech"
-          class="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm md:text-base rounded-full font-bold shadow-sm"
+          class="px-3 py-1 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/40 dark:to-purple-900/40 text-blue-700 dark:text-blue-300 text-xs sm:text-sm md:text-base rounded-full shadow-sm"
         >
           {{ tech }}
         </span>
