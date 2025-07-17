@@ -14,18 +14,25 @@
         <template v-if="isVideoType(displayedImage)">
           <video
             :src="displayedImage"
+            autoplay
             loop
             disablePictureInPicture
-            playsinline
-            autoplay
             muted
+            playsinline
             class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
-          />
+          ></video>
         </template>
         <template v-else>
           <img
+            v-if="displayedImage"
             :src="displayedImage"
             :alt="project.title"
+            class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
+          />
+          <img
+            v-else
+            src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg"
+            alt="Project preview"
             class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
           />
         </template>
@@ -52,7 +59,7 @@
         </span>
       </div>
       <div
-        class="absolute inset-0 bg-gradient-to-br from-white/50 via-blue-100/30 to-purple-100/30 dark:from-gray-900/50 dark:via-blue-900/30 dark:to-purple-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-xl z-20 flex items-center justify-center"
+        class="absolute inset-0 bg-gradient-to-br from-white/50 via-blue-100/30 to-purple-100/30 dark:from-gray-900/50 dark:via-blue-900/30 dark:to-purple-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-xl z-20 flex items-center justify-center hidden sm:flex"
       >
         <div class="flex space-x-3">
           <a
@@ -169,7 +176,7 @@ let intervalId = null;
 onMounted(() => {
   intervalId = setInterval(() => {
     carouselIndex.value = (carouselIndex.value + 1) % imagesArray.value.length;
-  }, 3000);
+  }, 5000);
 });
 onUnmounted(() => {
   if (intervalId) clearInterval(intervalId);
