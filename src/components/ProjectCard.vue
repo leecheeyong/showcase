@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative rounded-3xl overflow-hidden group border border-transparent bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-blue-950 dark:to-purple-900 shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-xl h-80 sm:h-[420px] md:h-[460px] lg:h-[500px] flex flex-col"
+    class="relative rounded-3xl overflow-hidden group border border-transparent bg-gradient-to-br from-blue-100 via-white to-purple-100 dark:from-gray-900 dark:via-blue-950 dark:to-purple-900 shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-xl h-90 sm:h-[450px] md:h-[480px] lg:h-[520px] flex flex-col"
   >
     <div class="absolute inset-0 pointer-events-none z-0 animate-card-gradient">
       <div
