@@ -19,13 +19,24 @@ A refreshed version of [my old project showcase website](https://joe.js.org/proj
 | Filtering/Search | ❎                   | ✅                   |
 
 
-## Getting Started
-1. Clone the repository
-2. Install dependencies:
+## Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/leecheeyong/showcase.git
+   cd showcase
+   ```
+2. **Install dependencies:**
    ```bash
    npm install
+   # or
+   yarn install
    ```
-3. Set up your Firebase credentials in `.env`
+3. **Configure Firebase:**
+   - Go to [Firebase Console](https://console.firebase.google.com/) and create a new project.
+   - Enable **Authentication** (Email/Password).
+   - Set up **Cloud Firestore** in test mode (or with secured rules).
+   - Edit the `src/firebase.js` file, replace with your Firebase credentials
 4. Start the development server:
    ```bash
    npm run dev
