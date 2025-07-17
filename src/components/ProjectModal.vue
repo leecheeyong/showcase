@@ -16,6 +16,7 @@
             muted
             loop
             :alt="project.title"
+            loading="lazy"
             class="w-full h-full object-cover rounded-t-2xl"
           />
         </template>
@@ -23,6 +24,7 @@
           <img
             :src="displayedImage"
             :alt="project.title"
+            loading="lazy"
             class="w-full h-full object-cover rounded-t-2xl"
           />
         </template>

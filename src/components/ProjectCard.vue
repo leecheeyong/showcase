@@ -14,6 +14,7 @@
         <template v-if="isVideoType(displayedImage)">
           <video
             :src="displayedImage"
+            loading="lazy"
             autoplay
             loop
             disablePictureInPicture
@@ -27,12 +28,14 @@
             v-if="displayedImage"
             :src="displayedImage"
             :alt="project.title"
+            loading="lazy"
             class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
           />
           <img
             v-else
             src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg"
             alt="Project preview"
+            loading="lazy"
             class="w-full h-full object-cover transition-transform duration-300 ease-in-out"
           />
         </template>
