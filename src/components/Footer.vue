@@ -35,7 +35,7 @@ const date = new Date().getFullYear();
             <li>
               <a
                 class="text-sm block py-1 px-3"
-                href="https://github.com/leecheeyong/project-showcase"
+                href="https://github.com/leecheeyong/showcase"
                 target="_blank"
                 >Source Code</a
               >
@@ -67,7 +67,7 @@ const date = new Date().getFullYear();
             <li>
               <a
                 class="text-sm block py-1 px-3"
-                href="https://github.com/leecheeyong/project-showcase/blob/main/LICENSE"
+                href="https://github.com/leecheeyong/showcase/blob/main/LICENSE"
                 target="_blank"
                 >MIT License</a
               >
