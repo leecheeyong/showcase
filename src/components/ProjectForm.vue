@@ -109,19 +109,6 @@
       
       <div>
         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-          Project Image URL
-          <span class="text-gray-400 font-normal">(Optional)</span>
-        </label>
-        <input 
-          v-model="formData.image"
-          type="url"
-          class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border-0 rounded-xl focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-600 transition-all duration-300 text-gray-900 dark:text-white placeholder-gray-500"
-          placeholder="https://example.com/image.jpg"
-        >
-      </div>
-      
-      <div>
-        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
           Technologies Used
         </label>
         <input 
@@ -131,6 +118,32 @@
           placeholder="React, Node.js, MongoDB (comma-separated)"
         >
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Separate technologies with commas</p>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+          Project Images
+          <span class="text-gray-400 font-normal">(Add multiple image URLs)</span>
+        </label>
+        <div class="space-y-2 mb-2">
+          <div v-for="(img, idx) in formData.images" :key="idx" class="flex items-center gap-2">
+            <input 
+              :value="img"
+              readonly
+              class="flex-1 px-4 py-2 bg-gray-50 dark:bg-gray-700 border-0 rounded-lg text-gray-900 dark:text-white text-xs"
+            >
+            <button type="button" @click="removeImage(idx)" class="px-2 py-1 text-xs bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-300 rounded hover:bg-red-200 dark:hover:bg-red-800">Remove</button>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <input 
+            v-model="newImageUrl"
+            type="url"
+            class="flex-1 px-4 py-2 bg-gray-50 dark:bg-gray-700 border-0 rounded-lg focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white text-xs"
+            placeholder="https://example.com/image.jpg"
+          >
+          <button type="button" @click="addImage" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-xs font-semibold">Add</button>
+        </div>
       </div>
       
       <div class="flex flex-col sm:flex-row gap-3 pt-4">
@@ -183,11 +196,12 @@ const formData = ref({
   longDescription: '',
   liveUrl: '',
   githubUrl: '',
-  image: '',
+  images: [],
   technologies: []
 })
 
 const technologiesInput = ref('')
+const newImageUrl = ref('')
 
 const resetForm = () => {
   if (isEditing.value) {
@@ -200,7 +214,7 @@ const resetForm = () => {
       longDescription: '',
       liveUrl: '',
       githubUrl: '',
-      image: '',
+      images: [],
       technologies: []
     }
     technologiesInput.value = ''
@@ -211,10 +225,25 @@ watch(() => props.project, (newProject) => {
   if (newProject) {
     formData.value = { ...newProject }
     technologiesInput.value = newProject.technologies?.join(', ') || ''
+    formData.value.images = Array.isArray(newProject.images)
+      ? newProject.images
+      : (newProject.image ? [newProject.image] : [])
   } else {
     resetForm()
   }
 }, { immediate: true })
+
+const addImage = () => {
+  if (!Array.isArray(formData.value.images)) formData.value.images = [];
+  if (newImageUrl.value && !formData.value.images.includes(newImageUrl.value)) {
+    formData.value.images.push(newImageUrl.value)
+    newImageUrl.value = ''
+  }
+}
+
+const removeImage = (idx) => {
+  formData.value.images.splice(idx, 1)
+}
 
 const handleSubmit = () => {
   const technologies = technologiesInput.value
@@ -224,7 +253,8 @@ const handleSubmit = () => {
 
   const projectData = {
     ...formData.value,
-    technologies
+    technologies,
+    image: formData.value.images[0] || '' 
   }
 
   emit('submit', projectData)
