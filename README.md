@@ -32,4 +32,4 @@ A refreshed version of [my old project showcase website](https://joe.js.org/proj
    ```
 
 ## License
-This project is available as an open source under the terms of the [MIT License][LICENSE]
+This project is available as an open source under the terms of the [MIT License](LICENSE)
